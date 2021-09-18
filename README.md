@@ -11,8 +11,8 @@ O usuário também pode entrar em contato através de um formulário de contato 
   <li> Diagrama Entidade Relacionamento (DER) da modelagem proposta;</li>
   <li> Arquivo .SQL com a Modelagem das tabelas; </li>
   <li> Stored Procedures para todas as tabelas contendo: </li>
-o Inserção;
+<pre>o Inserção;
 o Exclusão;
 o Edição; e
-o Selects, necessários para o funcionamento do sistema.
+o Selects, necessários para o funcionamento do sistema.</pre>
 </ul>
