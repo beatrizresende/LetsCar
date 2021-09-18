@@ -7,10 +7,12 @@ A ideia é que haja um site para que os clientes façam buscas por carros, com q
 Um ponto que focaram bastante, foi sobre os usuários poderem “favoritar” carros que mais gostaram e conseguirem visualizar posteriormente tais carros.
 O usuário também pode entrar em contato através de um formulário de contato para falar sobre um determinado veículo.
 Precisamos entregar:
-• Diagrama Entidade Relacionamento (DER) da modelagem proposta;
+<ul>
+  <li>• Diagrama Entidade Relacionamento (DER) da modelagem proposta;</li>
 • Arquivo .SQL com a Modelagem das tabelas;
 • Stored Procedures para todas as tabelas contendo:
 o Inserção;
 o Exclusão;
 o Edição; e
 o Selects, necessários para o funcionamento do sistema.
+</ul>
