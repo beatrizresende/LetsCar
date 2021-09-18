@@ -6,11 +6,11 @@ Atualmente, a empresa faz venda de carros em um espaço físico, porém com a pa
 A ideia é que haja um site para que os clientes façam buscas por carros, com quaisquer um dos atributos que um carro pode apresentar, como, marca, modelo, ano, cor, preço, modelidade de pagamento, adicionais (como ar, vidro, trava, etc)
 Um ponto que focaram bastante, foi sobre os usuários poderem “favoritar” carros que mais gostaram e conseguirem visualizar posteriormente tais carros.
 O usuário também pode entrar em contato através de um formulário de contato para falar sobre um determinado veículo.
-Precisamos entregar:
+<p>Precisamos entregar:<p>
 <ul>
-  <li>• Diagrama Entidade Relacionamento (DER) da modelagem proposta;</li>
-• Arquivo .SQL com a Modelagem das tabelas;
-• Stored Procedures para todas as tabelas contendo:
+  <li> Diagrama Entidade Relacionamento (DER) da modelagem proposta;</li>
+  <li> Arquivo .SQL com a Modelagem das tabelas; </li>
+  <li> Stored Procedures para todas as tabelas contendo: </li>
 o Inserção;
 o Exclusão;
 o Edição; e
