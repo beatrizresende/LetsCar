@@ -1,8 +1,8 @@
 --DATABASE
 CREATE DATABASE LetsCar
-
+GO
 USE LetsCar
-
+GO
 --TABELAS
 --Marcas---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Marcas
@@ -53,7 +53,7 @@ CREATE PROCEDURE DeletarMarca
 
 --EXEC DeletarMarca @IdMarca = 7
 
-SELECT * FROM Marcas
+GO
 
 --Modelos---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Modelos
@@ -106,6 +106,8 @@ CREATE PROCEDURE DeletarModelo
 
 --EXEC DeletarModelo @IdModelo = 4
 
+GO
+
 --Cores---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Cores
 (
@@ -153,7 +155,7 @@ CREATE PROCEDURE DeletarCor
 	END
 
 --EXEC DeletarCor @IdCor = 6
-
+GO
 --Carros---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Carros
 (
@@ -211,7 +213,7 @@ CREATE PROCEDURE DeletarCarro
 	END
 
 --EXEC DeletarCarro @IdCarro = 2
-
+GO
 --Adicionais---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Adicionais
@@ -257,7 +259,7 @@ CREATE PROCEDURE DeletarAdicional
 	END
 
 --EXEC DeletarAdicional @IdAdicional = 3
-
+GO
 CREATE TABLE AdicionaisCarros
 (
 	Id INT IDENTITY(1,1) NOT NULL,
@@ -305,7 +307,7 @@ CREATE PROCEDURE DeletarAdicionalCarro
 	END
 
 --EXEC DeletarAdicionalCarro @IdOperacao = 1
-
+GO
 --Modos de pagamento---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE ModosPagamento
 (
@@ -351,7 +353,7 @@ CREATE PROCEDURE DeletarModoPagamento
 	END
 
 --EXEC DeletarModoPagamento @IdModoPagamento = 4
-
+GO
 CREATE TABLE ModosPagamentoCarros
 (
 	Id INT IDENTITY(1,1) NOT NULL,
@@ -400,7 +402,7 @@ CREATE PROCEDURE DeletarModoPagamentoCarro
 	END
 
 --EXEC DeletarModoPagamentoCarro @IdOperacao = 3
-
+GO
 --Usuarios---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Usuarios
 (
@@ -461,7 +463,7 @@ CREATE PROCEDURE DeletarUsuario
 	END
 
 --EXEC DeletarUsuario @IdUsuario = 2
-
+GO
 --Favoritados---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE FavoritosUsuario
 (
@@ -534,7 +536,7 @@ CREATE PROCEDURE DeletarCarroFavoritado
 	END
 
 --EXEC DeletarCarroFavoritado @IdOperacao = 1
-
+GO
 --Formulário de contato---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Contato
@@ -747,3 +749,34 @@ CREATE PROCEDURE BuscarModoPagamento
 	END
 
 --EXEC BuscarPreco @Preco = 200000000.00
+
+--Buscar por adicionais-----------------------------------------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROCEDURE BuscarAdicionais
+	@Adicional VARCHAR(100)
+	AS
+	BEGIN
+		SELECT a.Nome AS Adicional,
+		mo.Nome AS Modelo,
+		m.Nome AS Marca,
+		c.Ano,
+		co.Nome AS Cor,
+		c.Preco,
+		mp.Nome AS ModoPagamento
+			FROM Adicionais a
+				INNER JOIN AdicionaisCarros ac
+					ON a.Id = ac.IdAdicional
+						INNER JOIN Carros c
+							ON c.Id = ac.IdCarro
+								INNER JOIN Modelos mo
+									ON c.IdModelo = mo.Id
+										INNER JOIN Marcas m
+											ON mo.IdMarca = m.Id
+												INNER JOIN Cores co
+													ON co.Id = c.IdCor
+														INNER JOIN ModosPagamentoCarros mpc
+															ON mpc.IdCarro = c.Id
+																INNER JOIN ModosPagamento mp
+																	ON mp.Id = mpc.IdModo
+																		WHERE a.Nome = @Adicional
+	END
